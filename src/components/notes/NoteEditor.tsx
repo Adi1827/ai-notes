@@ -85,10 +85,15 @@ export function NoteEditor({ note, onClose }: NoteEditorProps) {
         throw new Error('No summary generated');
       }
 
+      const updatedContent = `${content}`;
+      setContent(updatedContent);
+      setTitle(title);
       if (note) {
-        updateNote.mutate({ summary });
-      } else {
-        setContent(prev => `${prev}\n\nSummary: ${summary}`);
+        updateNote.mutate({ 
+          content: updatedContent,
+          title: title,
+          summary 
+        });
       }
     } catch (error) {
       console.error('Error summarizing note:', error);
