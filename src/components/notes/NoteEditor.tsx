@@ -101,10 +101,16 @@ export function NoteEditor({ note, onClose }: NoteEditorProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    const user = await supabase.auth.getUser();
+    if (!user.data.user?.id) {
+      console.error('No user ID found');
+      return;
+    }
+
     const noteData = {
       title,
       content,
-      user_id: (await supabase.auth.getUser()).data.user?.id!,
+      user_id: user.data.user.id,
     };
 
     if (note) {

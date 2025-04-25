@@ -4,9 +4,10 @@ import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import { AuthForm } from '@/components/auth/AuthForm';
 import { NoteList } from '@/components/notes/NoteList';
+import { Session } from '@supabase/supabase-js';
 
 export default function Home() {
-  const [session, setSession] = useState<any>(null);
+  const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
