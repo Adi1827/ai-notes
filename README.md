@@ -2,13 +2,18 @@
 
 A modern, AI-powered notes application built with Next.js, Supabase, and Google's Gemini API.
 
+## Live Demo
+
+Check out the live application at: [https://ai-notes-sigma.vercel.app/](https://ai-notes-sigma.vercel.app/)
+
 ## Features
 
 - Create, edit, and delete notes
 - AI-powered text summarization using Gemini API
 - Real-time updates
-- Secure authentication
+- Secure authentication with Google OAuth
 - Responsive design
+- Dark mode support
 
 ## Tech Stack
 
@@ -17,6 +22,8 @@ A modern, AI-powered notes application built with Next.js, Supabase, and Google'
 - Supabase (Authentication & Database)
 - Google Gemini API
 - Tailwind CSS
+- React Query for data fetching
+- Radix UI components
 
 ## Getting Started
 
@@ -45,13 +52,26 @@ npm run dev
 
 5. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
+## Authentication Setup
+
+1. Configure Google OAuth in your Supabase project:
+   - Go to Authentication > Providers > Google
+   - Enable Google provider
+   - Add your Google OAuth credentials
+   - Add the following redirect URLs:
+     - `http://localhost:3000/auth/callback` (for development)
+     - `https://ai-notes-sigma.vercel.app/auth/callback` (for production)
+
 ## Deployment
 
-This project is configured for deployment on Vercel. To deploy:
+This project is deployed on Vercel. To deploy your own version:
 
 1. Push your code to GitHub
 2. Import your repository to Vercel
-3. Add your environment variables in Vercel's project settings
+3. Add your environment variables in Vercel's project settings:
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+   - `NEXT_PUBLIC_GEMINI_API_KEY`
 4. Deploy!
 
 ## Contributing
